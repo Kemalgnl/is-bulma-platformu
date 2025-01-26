@@ -1,0 +1,14 @@
+.left-container, .right-container {
+    position: fixed;
+    padding: 10px;
+    border: 1px solid #ccc;
+    height: calc(100vh - 20px); /* Ekran yüksekliği - padding */
+    overflow-y: auto; /* Scroll olacaksa scrollbar göster */
+}
+
+.main-container {
+    margin-left: 240px; /* Sol konteynerin genişliği + iç boşluk + sağ konteynerin genişliği */
+    margin-right: 240px; /* Sol konteynerin genişliği + iç boşluk + sağ konteynerin genişliği */
+    padding: 10px;
+    border: 1px solid #ccc;
+}

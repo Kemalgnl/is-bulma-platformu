@@ -1,0 +1,33 @@
+.content-container {
+    height: 100vh; /* Ekran yüksekliği kadar olacak */
+    overflow-y: scroll; /* İçerik çoksa kaydırma çubuğu görünecek */
+  }
+
+  /* Sağ ve sol sabit konteynerler */
+  .fixed-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+  }
+  .main-content {
+    margin-top: 10px;
+    
+    margin-left: 21%; /* Sol konteynerin genişliği + kenar boşluğu */
+    margin-right: 19%; /* Sağ konteynerin genişliği + kenar boşluğu */
+    padding: 20px;
+    background-color: #ffffff;
+  }
+  .fixed-container-right {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 300px; /* adjust the width as needed */
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-left: 1px solid #ddd;
+  }
+  .content-container {
+    margin-right: 320px; /* adjust the margin as needed */
+  }

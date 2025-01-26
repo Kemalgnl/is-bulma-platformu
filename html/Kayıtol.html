@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    
+    <title>Kayıt Ol</title>
+</head>
+<body>
+
+    
+    <div class="girişEkranı" style=" text-align: center; justify-content: center;" > 
+      <div style="margin-left: 40%;margin-right: 40%;margin-top: 10%;">
+        <form id="Kayıtol">
+          <div class="form-group" style="text-align: left;" >
+            <label for="exampleInputEmail1">Email Adresiniz:</label>
+           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">Mail adresinizi kimse ile paylaşmayacağız.</small>
+         </div>
+         <div class="form-group" style="text-align: left;">
+           <label for="exampleInputPassword1">Şifreniz:</label>
+           <input type="password" class="form-control" id="şifre1">
+        </div>
+        <div class="form-group" style="text-align: left;">
+            <label for="exampleInputPassword1">Şifreniz Tekrar:</label>
+            <input type="password" class="form-control" id="şifre2">
+         </div>
+        <div class="form-group form-check"style="text-align: left;">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Beni Hatırla</label>
+        </div>
+
+        <div >
+            <button onclick="kontrol()" type="Kayıt ol" class="btn btn-primary"> Kayıt ol </button>
+        </div>
+
+            <small id="emailHelp" class="form-text text-muted">Zaten bir hesabınız var mı?</small>
+        <div>
+            <button type="Giriş Yap" class="btn btn-primary">
+                <a href="giriş.html"style="color: inherit;text-decoration: none;"> Giriş Yap</a></button>
+        </div>
+
+        </form>
+    </div>
+
+</div>
+
+<script>
+  function kontrol() {
+   const form = document.getElementById('Kayıtol');
+    // Hata mesajı göstermek için div
+    //const errorMessage = document.getElementById('errorMessage');
+    
+    const input1 = document.getElementById('şifre1').value;
+    const input2 = document.getElementById('şifre2').value;
+
+      // Değerleri karşılaştır
+      if (input1 != input2) {
+          alert("şifreler birbiriyle aynı olmalı")
+      }
+      else
+      {
+          window.location.href = 'KayıtOlDetaylı.html';
+      }
+    
+}
+</script>
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>

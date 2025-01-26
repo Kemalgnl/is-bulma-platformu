@@ -1,0 +1,176 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+}
+
+.sidebar .nav-link img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.friend-request {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.friend-request img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.friend-request div {
+    flex: 1;
+}
+
+.friend-request h6 {
+    margin: 0;
+}
+
+.friend-request p {
+    margin: 0;
+}
+
+.event, .post-box, .post {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+}
+
+.event-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+}
+
+.event-details {
+    flex: 1;
+}
+
+.event-details h5 {
+    margin: 0;
+}
+
+.event-details p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.post-box .form-control {
+    border-radius: 20px;
+}
+
+.post-box button {
+    border-radius: 20px;
+}
+
+.post .text-muted {
+    font-size: 0.85rem;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.profile h5 {
+    margin: 10px 0 5px 0;
+}
+
+.profile p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.profile button {
+    margin-top: 10px;
+}
+
+.sidebar .sidebar-heading {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.sidebar .nav-item {
+    margin-bottom: 10px;
+}
+
+.sidebar .nav-item .nav-link {
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar .nav-item .nav-link:hover {
+    background-color: #e9ecef;
+}
+
+.sidebar .nav-item .nav-link button {
+    width: 100%;
+    text-align: left;
+}
+
+.sidebar .nav-item .nav-link img {
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.sidebar .nav-item .nav-link p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.sidebar .nav-item .nav-link h6 {
+    margin: 0;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.sidebar {
+    background-color: #f8f9fa;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .sidebar-sticky {
+        position: relative;
+        height: auto;
+    }
+
+    .navbar-collapse {
+        margin-top: 20px;
+    }
+}
