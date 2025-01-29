@@ -1,0 +1,124 @@
+CREATE DATABASE proje2;
+USE proje2;
+
+CREATE TABLE kullanicilar (
+    kullanici_id INT AUTO_INCREMENT PRIMARY KEY,
+    kullanici_eposta VARCHAR(25) UNIQUE,
+    kullanici_telNo VARCHAR(25),
+    kullanici_adi VARCHAR(25),
+    kullanici_şifre VARCHAR(25),
+    kullanici_soyadi VARCHAR(25),
+    kullanici_yas INT,
+    kullanici_sirket VARCHAR(25),
+    kullanici_meslek VARCHAR(25),
+    kullanici_olusturmaT date,
+    kullanıcı_pozisyon  VARCHAR(100),
+    kullanıcı_hakkında TEXT,
+    kullanıcı_yetenekler TEXT
+);
+
+CREATE TABLE şirketler (
+    şirket_id INT AUTO_INCREMENT PRIMARY KEY,
+    şirket_eposta VARCHAR(25) UNIQUE,
+    şirket_telNo VARCHAR(25),
+    şirket_adi VARCHAR(25),
+    şirket_şifre VARCHAR(25),
+    şirket_olusturmaT date,
+    şirket_Alanı  VARCHAR(100),
+    şirket_hakkında TEXT,
+    şirket_calışanİd INT
+);
+
+
+CREATE TABLE paylasimlar (
+    paylasim_id INT AUTO_INCREMENT PRIMARY KEY,
+    paylasim_kullaniciid INT,
+    paylasim_icerik TEXT,
+    paylasim_olusturmaT TIMESTAMP(3),
+    FOREIGN KEY (paylasim_kullaniciid) REFERENCES kullanicilar(kullanici_id)
+);
+
+CREATE TABLE baglantilar (
+    baglanti_id INT AUTO_INCREMENT PRIMARY KEY,
+    anabaglanti INT,  
+    baglanankisi INT, 
+    baglanti_olusturmaT DATE,
+    FOREIGN KEY (anabaglanti) REFERENCES kullanicilar(kullanici_id),
+    FOREIGN KEY (baglanankisi) REFERENCES kullanicilar(kullanici_id)
+);
+
+CREATE TABLE yorumlar (
+    yorum_id INT AUTO_INCREMENT PRIMARY KEY,
+    yorum_paylasim_id INT,
+    yorum_kullanici_id INT,
+    yorum_icerik TEXT,
+    yorum_olusturmaT date,
+    FOREIGN KEY (yorum_paylasim_id) REFERENCES paylasimlar(paylasim_id),
+    FOREIGN KEY (yorum_kullanici_id) REFERENCES kullanicilar(kullanici_id)
+);
+CREATE TABLE etkinlikler (
+    etkinlik_id INT AUTO_INCREMENT PRIMARY KEY,
+    etkinlik_adı VARCHAR(255) NOT NULL,
+    etkinlik_tarihi DATE NOT NULL,
+    etkinlik_konumu VARCHAR(255) NOT NULL,
+    etkinlik_aciklama TEXT,
+    etkinlik_durum VARCHAR(50),
+    etkinlik_olusturmaT TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE bildirimler (
+    bildirim_id INT AUTO_INCREMENT PRIMARY KEY,
+    bildirim_kullanici_id INT,
+    bildirim_paylasim_id INT,
+    bildirim_tipi ENUM('yeni_paylasim') NOT NULL,
+    bildirim_olusturmaT date,
+    FOREIGN KEY (bildirim_kullanici_id) REFERENCES kullanicilar(kullanici_id),
+    FOREIGN KEY (bildirim_paylasim_id) REFERENCES paylasimlar(paylasim_id)
+);
+-- Kullanıcılar
+INSERT INTO kullanicilar (kullanici_eposta, kullanici_telNo, kullanici_adi, kullanici_soyadi, kullanici_yas, kullanici_sirket, kullanici_meslek, kullanici_olusturmaT)
+VALUES 
+    ('kullanici1@ornek.com', '05551234567', 'Eren', 'Yılmaz', 30, 'ABC Ltd.', 'Yazılım Mühendisi', '2023-01-01'),
+    ('kullanici2@ornek.com', '05559876543', 'Ayşe', 'Kara', 25, 'XYZ A.Ş.', 'Veri Analisti', '2023-02-01'),
+    ('kullanici3@ornek.com', '05555555555', 'Mehmet', 'Demir', 35, 'QWE Ltd.', 'Pazarlama Müdürü', '2023-03-01');
+
+-- Paylaşımlar
+INSERT INTO paylasimlar (paylasim_kullaniciid, paylasim_icerik, paylasim_olusturmaT)
+VALUES 
+    (1, 'Bu bir örnek paylaşım.', '2023-04-01'),
+    (2, 'Bugün güzel bir gün!', '2023-04-02'),
+    (3, 'İşte günün en iyi anlarından biri.', '2023-04-03');
+
+-- Bağlantılar
+INSERT INTO baglantilar (anabaglanti, baglanankisi)
+VALUES 
+    (1, 2),(1, 3),(1, 4),(2, 1),(2, 3),(2, 4),
+    (3, 1),(3, 2),(3, 4),(4, 1),(4, 3),(4, 2);
+
+-- Yorumlar
+INSERT INTO yorumlar (yorum_paylasim_id, yorum_kullanici_id, yorum_icerik)
+VALUES 
+    (1, 2, 'Bu gerçekten harika bir paylaşım!'),
+    (2, 3, 'Teşekkürler!'),
+    (3, 1, 'Harika bir an.');
+
+-- Bildirimler
+INSERT INTO bildirimler (bildirim_kullanici_id, bildirim_paylasim_id, bildirim_tipi)
+VALUES 
+    (1, 2, 'yeni_paylasim'),
+    (2, 3, 'yeni_paylasim');
+
+
+INSERT INTO etkinlikler ( etkinlik_adı,etkinlik_tarihi, etkinlik_konumu,etkinlik_aciklama,etkinlik_durum)
+VALUES 
+('Ankara TEKMER Aylık Bültenine Hoşgeldiniz!','2023-10-09','Ankara','TEKMER den duyurular, Born, Bumper, Figopara, İkas, Makswin, Mindsite, Mükellef, The Glimpse Group firmalarından gelişmeler var.','bitti'),
+    ('Oniki E-Ticaret ve E-İhracat Konferansı','2024-05-09','İstanbul - Fintech İstanbul B2B Connect','Türkiye nin en verimli etkinlik konsepti olan Oniki nin on yedinci E-Ticaret ve E-İhracat Konferansı.','bitti'),
+('Ankara Kitap Fuarı','2024-04-26','ATO Congresium','T20. Ankara Kitap Fuarı Kapılarını Açıyor!','bitti');
+
+INSERT INTO şirketler (şirket_eposta, şirket_telNo, şirket_adi, şirket_şifre, şirket_olusturmaT, şirket_Alanı, şirket_hakkında, şirket_calışanİd)
+VALUES 
+('info@turkcell.com.tr', '+90 212 111 1111', 'Turkcell', '123', '2000-01-01', 'Telekomünikasyon', 'Turkcell, Türkiye merkezli bir mobil iletişim operatörüdür.', 1001),
+('info@garanti.com.tr', '+90 212 111 1111', 'Garanti Bankası', '123', '2000-01-02', 'Bankacılık', 'Garanti Bankası, Türkiye\'nin en büyük ikinci özel bankasıdır.', 1002),
+('info@vestel.com.tr', '+90 212 111 1111 ', 'Vestel', '123', '2000-01-03', 'Elektronik', 'Vestel, beyaz eşya ve elektronik ürünler üreten bir Türk şirketidir.', 1003);
+
